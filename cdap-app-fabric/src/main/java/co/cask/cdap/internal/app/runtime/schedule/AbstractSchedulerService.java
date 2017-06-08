@@ -210,10 +210,7 @@ public abstract class AbstractSchedulerService extends AbstractIdleService imple
       }
       // Schedules may not be all read into memory before scheduler fully starts,
       // throw ServiceUnavailableException to retry next time
-      throw new ServiceUnavailableException(
-        String.format("Status cannot be found for schedule '%s', probably because" +
-                        " scheduler '%s' has not fully started yet. Will retry later.",
-                      program.getParent().schedule(scheduleName), scheduler.getClass().getSimpleName()));
+      throw new ServiceUnavailableException(this.getClass().getSimpleName());
     }
     return status;
   }
